@@ -1,8 +1,40 @@
-<h1>Measuring Song Explicitness</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/master.css">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="contiainer-fluid">
+      <div class="row">
+        <div class="col-sm-8 px-2 mt-4">
+          <h1 class="text-center">Measuring Song Explicitness</h1>
+        </div>
+      </div>
 
-<h4>Enter a song name</h4>
-<form method="post">
-  <input name="songname">
-  <button type="submit" name="submit">Submit</button>
-</form>
-<img src="data:image/png;base64, {{ plot_url }}">
+      <div class="row">
+        <div class="col-sm-4 px-2 ml-5 mt-4">
+          <h4>Enter a song name</h4>
+          <form method="post">
+            <input name="songname">
+            <button type="submit" name="submit">Submit</button>
+          </form>
+          <p>{{ no_swears }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <h5 class="text-center">{{ title }}</h5>
+          <img src="data:image/png;base64, {{ plot_url }}" class="img-fluid out-graph">
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </body>
+</html>

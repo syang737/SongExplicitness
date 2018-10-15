@@ -1,11 +1,11 @@
 
 # coding: utf-
 
-from songLyrics import song_lyrics
+import songLyrics
 import Algorithmia
 
 def swear_dict(song_name):
-    lyrics = song_lyrics(song_name)
+    lyrics = songLyrics.song_lyrics(song_name)
     input = [
       lyrics
     ]

@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
-from songexplicitness import swear_dict
-from visualize import plot_swears
+import songexplicitness
+import visualize
 import StringIO
 import base64
 
@@ -15,15 +15,25 @@ def my_form_post():
     img = StringIO.StringIO()
 
     songname = request.form['songname']
-    swears = swear_dict(songname)
-    fig = plot_swears(swears)
-    fig.show()
-    fig.savefig(img, format='png')
-    img.seek(0)
+    print(songname)
+    swears = songexplicitness.swear_dict(songname)
+    no_swears = ''
+    if len(swears) > 0:
+        fig = visualize.plot_swears(swears)
+        fig.show()
+        fig.savefig(img, format='png', bbox_inches='tight')
+        img.seek(0)
+        plot_url = base64.b64encode(img.getvalue())
+    else:
+        no_swears = '\'%s\' has no swear words.' % songname
+        plot_url = ''
 
-    plot_url = base64.b64encode(img.getvalue())
+    if no_swears == '':
+        title = songname
+    else:
+        title = ''
 
-    return render_template('index.html', plot_url=plot_url)
+    return render_template('index.html', plot_url=plot_url, no_swears=no_swears, title=title)
 
 if __name__ == '__main__':
     app.run()
