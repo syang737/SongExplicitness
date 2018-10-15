@@ -1,7 +1,7 @@
 # SongExplicitness
 
-Measuring song explicitness using NLP
+Web Application to measure swear words
 ---
-This is a web application where users will enter a song name, and we'll visualize the frequency of swear words in that song.
+User input is queried into Genius API, and the top result's lyrics are processed using Algorithmia API to graph the frequency of swear words
 
-Further analysis will be done on the frequency of certain swear words to determine how "explicit" the song is.
+This app uses Flask and pandas
