@@ -13,7 +13,7 @@ def my_form():
 @app.route('/', methods=["POST"])
 def my_form_post():
     img = StringIO.StringIO()
-
+        
     songname = request.form['songname']
     print(songname)
     swears = songexplicitness.swear_dict(songname)
